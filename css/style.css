@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Unbounded', cursive;
+    box-sizing: border-box;
+}
+
+/* #### ELEMENTOS #### */
+
+nav {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 2vw;
+    background-color: antiquewhite;
+}
+
+hgroup img {
+    width: 100%;
+}
+
+input {
+    width: 16vw;
+    height: 3.4vh;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 2em;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+
+table {
+    margin: auto;
+}
+
+th {
+    background-color: antiquewhite;
+    padding: .5em 3em;
+    border: 1px solid rgb(255, 166, 156);
+
+}
+
+td {
+    padding: .5em 0;
+    border: 1px solid rgb(255, 166, 156);
+}
+
+td #add {
+    padding: 0;
+}
+
+td a {
+    padding: 0 3em;
+}
+
+td:hover {
+    background-color: rgb(255, 248, 239);
+}
+
+/* td a:hover::after {
+    content: attr(data-title);
+    background-color:rgb(255, 209, 204);
+    font-size: 12px;
+    position: absolute;
+    border-radius: 8px;
+    padding: 1em;
+} */
+
+/* #### CLASES #### */
+
+/* NAV */
+.inicio {
+    width: 16vw;
+    text-align: start;
+}
+
+.menu {
+    width: 16vw;
+    text-align: end;
+}
+
+.title {
+    margin: 0;
+    font-family: 'Eczar', serif;
+    font-weight: 800;
+    font-size: 6vh;
+}
+
+
+.description {
+    margin-bottom: 1em;
+}
+
+.sub-title {
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-size: 1.4vw;
+}
+
+.box {
+    margin: 2vw 24vw;
+}
+
+.paragraph {
+    margin: 6vh;
+}
+
+.line {
+    margin: 3vh;
+}
