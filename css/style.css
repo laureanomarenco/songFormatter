@@ -57,6 +57,7 @@ td #add {
 
 td a {
     padding: 0 3em;
+    cursor: pointer;
 }
 
 td:hover {
