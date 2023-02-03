@@ -21,14 +21,6 @@ hgroup img {
     width: 100%;
 }
 
-input {
-    width: 16vw;
-    height: 3.4vh;
-    border: none;
-    border-bottom: 1px solid black;
-    margin: 2em;
-}
-
 a {
     color: black;
     text-decoration: none;
@@ -114,4 +106,8 @@ td:hover {
 
 .line {
     margin: 3vh;
+}
+
+.fa-user {
+    font-size: 24px;
 }
