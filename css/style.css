@@ -56,6 +56,10 @@ td:hover {
     background-color: rgb(255, 248, 239);
 }
 
+
+hr {
+    margin-bottom: 46px;
+}
 /* td a:hover::after {
     content: attr(data-title);
     background-color:rgb(255, 209, 204);
@@ -78,13 +82,17 @@ td:hover {
     text-align: end;
 }
 
+.head {
+    padding: 2em;
+}
+
+
 .title {
     margin: 0;
     font-family: 'Eczar', serif;
     font-weight: 800;
-    font-size: 6vh;
+    font-size: 64px;
 }
-
 
 .description {
     margin-bottom: 1em;

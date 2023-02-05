@@ -31,42 +31,51 @@ for (let i = 0; i < cancion.length; i++) {
     tdTitulo.appendChild(aTitulo)
     tr.appendChild(tdTitulo)
 
+    let auxAutor = false;
     for (let j = 0; j < autor.length; j++) {
         // Agregando autor
+        if (autor[j].idAutor === cancion[i].idAutor) {
+            const tdAutor = document.createElement('td')
+            const aAutor = document.createElement('a')
+            aAutor.innerText = autor[j].nombre
+            aAutor.href = `src/autor.html?id=${autor[j].idAutor}`
+            tdAutor.appendChild(aAutor)
+            tr.appendChild(tdAutor)
+            auxAutor = true;
+        }
+    }
+    if(!auxAutor){
         const tdAutor = document.createElement('td')
         const aAutor = document.createElement('a')
-
-        if (autor[j].idAutor === cancion[i].idAutor) {
-            aAutor.innerText = autor[j].nombre
-        } else {
-            aAutor.innerText = "Desconocido"
-        }
+        aAutor.innerText = 'Desconocido'
+        //aAutor.href = `src/autor.html?id=${autor[j].idAutor}`
         tdAutor.appendChild(aAutor)
         tr.appendChild(tdAutor)
-        
-        // Agregando año 
-        const td2 = document.createElement('td')
-        const p = document.createElement('p')
-
-        p.innerText = cancion[i].anio
-        td2.appendChild(p)
-        tr.appendChild(td2)
-
-        // Agregando botón add
-        const td3 = document.createElement('td')
-        td3.classList.add("add")
-        const a2 = document.createElement('a')
-
-        a2.innerText = "+"
-        td3.appendChild(a2)
-        tr.appendChild(td3)
-
-        
-        table.appendChild(tr)
-        console.log(table, tr)
+        auxAutor = true; 
     }
+
+    // Agregando año 
+    const td2 = document.createElement('td')
+    const p = document.createElement('p')
+
+    p.innerText = cancion[i].anio
+    td2.appendChild(p)
+    tr.appendChild(td2)
+
+    // Agregando botón add
+    const td3 = document.createElement('td')
+    td3.classList.add("add")
+    const a2 = document.createElement('a')
+
+    a2.innerText = "+"
+    td3.appendChild(a2)
+    tr.appendChild(td3)
+
+
+    table.appendChild(tr)
+    console.log(table, tr)
 }
 
-function cancionElegida(cancion){
+function cancionElegida(cancion) {
     console.log(cancion);
 }
