@@ -43,12 +43,12 @@ td {
     border: 1px solid rgb(255, 166, 156);
 }
 
-td #add {
+td .add {
     padding: 0;
 }
 
 td a {
-    padding: 0 3em;
+    padding: 0 1em;
     cursor: pointer;
 }
 
@@ -86,12 +86,12 @@ hr {
     padding: 2em;
 }
 
-
-.title {
-    margin: 0;
+.song-title {
+    margin: 0 0 24px 0;
     font-family: 'Eczar', serif;
     font-weight: 800;
     font-size: 64px;
+    line-height: 64px;
 }
 
 .description {
@@ -105,7 +105,7 @@ hr {
 }
 
 .box {
-    margin: 2vw 24vw;
+    margin: 2vw 16vw;
 }
 
 .paragraph {

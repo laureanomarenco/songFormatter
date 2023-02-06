@@ -26,7 +26,7 @@ const head = document.createElement('hgroup')
 head.classList.add("head")
 
 const h1 = document.createElement('h1')
-h1.classList.add("title")
+h1.classList.add("song-title")
 h1.innerHTML = cancion.titulo
 head.appendChild(h1)
 

@@ -14,6 +14,18 @@ const fetchAutores = async () => {
 const cancion = await fetchCanciones();
 const autor = await fetchAutores();
 
+// ## FILTRO DE BUSQUEDA ##
+
+const input = document.querySelector("#searcher")
+
+input.addEventListener("change", (e) => {
+    cancion.filter((c) => c.titulo !== e.target.value)
+    autor.filter((a) => a.nombre !== e.target.value)
+    console.log(cancion);
+    console.log(autor);
+})
+
+
 
 for (let i = 0; i < cancion.length; i++) {
     const table = document.querySelector('#body-table')
@@ -44,14 +56,14 @@ for (let i = 0; i < cancion.length; i++) {
             auxAutor = true;
         }
     }
-    if(!auxAutor){
+    if (!auxAutor) {
         const tdAutor = document.createElement('td')
         const aAutor = document.createElement('a')
         aAutor.innerText = 'Desconocido'
         //aAutor.href = `src/autor.html?id=${autor[j].idAutor}`
         tdAutor.appendChild(aAutor)
         tr.appendChild(tdAutor)
-        auxAutor = true; 
+        auxAutor = true;
     }
 
     // Agregando año 
@@ -66,16 +78,13 @@ for (let i = 0; i < cancion.length; i++) {
     const td3 = document.createElement('td')
     td3.classList.add("add")
     const a2 = document.createElement('a')
-
-    a2.innerText = "+"
+    //a2.href = "+"
+    const icon = document.createElement('i')
+    icon.classList.add("fa-solid")
+    icon.classList.add("fa-plus")
+    a2.appendChild(icon)
     td3.appendChild(a2)
     tr.appendChild(td3)
 
-
     table.appendChild(tr)
-    console.log(table, tr)
-}
-
-function cancionElegida(cancion) {
-    console.log(cancion);
 }

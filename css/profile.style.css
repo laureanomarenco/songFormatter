@@ -1,0 +1,7 @@
+.delete:hover {
+    background-color: rgb(255, 176, 176);
+}
+
+.edit:hover {
+    background-color: rgb(210, 209, 255);
+}
