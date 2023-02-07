@@ -38,13 +38,12 @@ const h1 = document.createElement('h1')
 h1.classList.add('title')
 h1.innerHTML = "Usuario"
 head.appendChild(h1)
-const span = document.createElement('span')
+
 const edit = document.createElement('i')
 edit.classList.add("fa-solid")
 edit.classList.add("fa-pen")
 
-span.appendChild(edit)
-head.appendChild(span)
+head.appendChild(edit)
 
 const username = document.createElement('p')
 username.innerHTML = "Username: " + user.nickname

@@ -77,14 +77,56 @@ for (let i = 0; i < cancion.length; i++) {
     // Agregando botón add
     const td3 = document.createElement('td')
     td3.classList.add("add")
-    const a2 = document.createElement('a')
+    // const a2 = document.createElement('a')
+    // a2.id = "btn"
     //a2.href = "+"
     const icon = document.createElement('i')
     icon.classList.add("fa-solid")
     icon.classList.add("fa-plus")
-    a2.appendChild(icon)
-    td3.appendChild(a2)
+    //a2.appendChild(icon)
+    td3.appendChild(icon)
     tr.appendChild(td3)
 
     table.appendChild(tr)
+
+
+    // modal add
+    const modal_div = document.createElement('div')
+    modal_div.classList.add('modal')
+
+    const content_div = document.createElement('div')
+    content_div.classList.add('modal-content')
+    modal_div.appendChild(content_div)
+
+    const close_span = document.createElement('span')
+    close_span.classList.add('close')
+    close_span.innerHTML = "&times;"
+    content_div.appendChild(close_span)
+
+    const modal_desc = document.createElement('h1')
+    modal_desc.innerHTML = 'Selecciona un cancionero'
+    content_div.appendChild(modal_desc)
+
+    const link_modal = document.createElement('a')
+    link_modal.innerHTML = "Cancionero hardcodeao"
+    link_modal.href = `src/cancionero.html`
+    content_div.appendChild(link_modal)
+
+    modal_div.appendChild(content_div)
+
+    table.appendChild(modal_div)
+    
+    icon.onclick = function() {
+        modal_div.style.display = "block";
+    }
+
+    close_span.onclick = function() {
+        modal_div.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal_div.style.display = "none";
+        }
+    }
 }
