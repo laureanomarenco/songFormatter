@@ -14,5 +14,3 @@ en la carpeta del proyecto vamos a tener una carpeta js con los archivos js que 
 fetch('http://localhost:3000/cancion')
     .then(res => res.json())
     .then(cancion => { acciones a realizar con lo devuelto })
-
-

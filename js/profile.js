@@ -1,5 +1,12 @@
 // const url = new URLSearchParams(location.search)
 // const id = url.get('id')
+// #TODO obtener usuario
+// #TODO estilar datos de usuario y agregar modificación
+// #TODO Agregar modificar y eliminar canciones publicadas
+// #TODO agregar cancioneros del usuario con links a cada uno (poner la lista arriba de las canciones agregadas)
+// #TODO Crear cancioneros
+// #TODO Agregar modificar y eliminar cancioneros
+
 const id = 1
 
 const fetchUser = async () => {
@@ -96,7 +103,7 @@ for (let i = 0; i < cancion.length; i++) {
     tdTitulo.addEventListener("click", () => {
         cancionClickeada.push(cancion[i])
     })
-    aTitulo.href = `src/song.html?id=${cancion[i].idCancion}`
+    aTitulo.href = `song.html?id=${cancion[i].idCancion}`
     //aTitulo.href = `src/song.html`
     tdTitulo.appendChild(aTitulo)
     tr.appendChild(tdTitulo)
@@ -108,7 +115,7 @@ for (let i = 0; i < cancion.length; i++) {
             const tdAutor = document.createElement('td')
             const aAutor = document.createElement('a')
             aAutor.innerText = autor[j].nombre
-            aAutor.href = `src/autor.html?id=${autor[j].idAutor}`
+            aAutor.href = `autor.html?id=${autor[j].idAutor}`
             tdAutor.appendChild(aAutor)
             tr.appendChild(tdAutor)
             auxAutor = true;

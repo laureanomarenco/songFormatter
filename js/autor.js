@@ -42,7 +42,7 @@ p.classList.add('history')
 p.innerHTML = autor.detalle
 body.appendChild(p)
 
-
+// #TODO agregar estilos para parrafos
 
 {/* <hgroup class="head-autor">
             <h1 class="title">Simon & Garfunkel</h1>

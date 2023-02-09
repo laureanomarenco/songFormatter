@@ -1,4 +1,5 @@
 // ** HOME **
+// #TODO controlar isLoggin
 const fetchCanciones = async () => {
     const aux = await fetch('http://localhost:3000/cancion')
     const cancion = await aux.json()
@@ -15,7 +16,7 @@ const cancion = await fetchCanciones();
 const autor = await fetchAutores();
 
 // ## FILTRO DE BUSQUEDA ##
-
+// #TODO busqueda
 const input = document.querySelector("#searcher")
 
 input.addEventListener("change", (e) => {
@@ -104,12 +105,15 @@ for (let i = 0; i < cancion.length; i++) {
     content_div.appendChild(close_span)
 
     const modal_desc = document.createElement('h1')
+    modal_desc.classList.add('modal-title')
     modal_desc.innerHTML = 'Selecciona un cancionero'
     content_div.appendChild(modal_desc)
 
     const link_modal = document.createElement('a')
+    link_modal.classList.add('modal-link')
     link_modal.innerHTML = "Cancionero hardcodeao"
-    link_modal.href = `src/cancionero.html`
+    //link_modal.href = `src/cancionero.html`
+    // #TODO agregar canción a cancionero
     content_div.appendChild(link_modal)
 
     modal_div.appendChild(content_div)
