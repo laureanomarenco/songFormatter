@@ -1,7 +1,39 @@
+.head {
+    background-color: azure;
+    margin-bottom: 16px;
+    margin: auto;
+    width: 40%;
+}
+
 .delete:hover {
     background-color: rgb(255, 176, 176);
 }
 
+.edit-user {
+    cursor: pointer;
+}
+
 .edit:hover {
     background-color: rgb(210, 209, 255);
+}
+
+.div-botones {
+    margin: 2em;
+}
+
+.boton {
+    font-size: 16px;
+    padding: .5em;
+    margin: 2em;
+    cursor: pointer;
+    background-color: rgb(255, 166, 156);
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: rgb(250, 133, 120);
+}
+
+.div-cancioneros {
+    margin: 2em;
 }

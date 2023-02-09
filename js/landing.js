@@ -1,6 +1,3 @@
-// #TODO agregar login y register
-// #TODO agregar carrousel con imagenes
-
 const content = document.querySelector('#content')
 // ## HEAD ##
 const $headGroup = document.createElement('hgroup')
@@ -148,7 +145,7 @@ $loginForm.addEventListener('submit', function(e){
     usuarios.map(u => {
         if(u.nickname === e.target[0].value && u.password === e.target[1].value){
             isLoggin = true;
-            localStorage.setItem('isLoggin', 'true');
+            localStorage.setItem('isLoggin', e.target[0].value);
             window.location.href = 'src/home.html'
             console.log("logeado correctamente");
         }

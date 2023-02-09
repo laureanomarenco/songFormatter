@@ -1,5 +1,4 @@
 // ** HOME **
-// #TODO controlar isLoggin
 
 const isLoggin = localStorage.getItem('isLoggin')
 
