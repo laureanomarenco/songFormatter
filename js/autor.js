@@ -2,7 +2,7 @@ let url = new URLSearchParams(location.search)
 const id = url.get('id')
 
 const fetchAutor = async () => {
-    const aux = await fetch(`http://localhost:3000/autor?idAutor=${id}`)
+    const aux = await fetch(`http://localhost:3000/autor?id=${id}`)
     const autor = await aux.json()
     return autor
 }

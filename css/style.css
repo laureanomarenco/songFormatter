@@ -80,6 +80,7 @@ hr {
 .menu {
     width: 16vw;
     text-align: end;
+    cursor: pointer;
 }
 
 .head {
@@ -119,3 +120,46 @@ hr {
 .fa-user {
     font-size: 24px;
 }
+
+.modal-user {
+    display: none; /* Hidden by default */
+    justify-content: flex-end;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 40px; /* Location of the box */
+    right: 20px;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 40%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+  }
+  
+  /* Modal Content */
+  .modal-content-user {
+    background-color: #fefefe;
+    padding: 16px;
+    border: 1px solid #888;
+    width: 16%;
+  }
+  
+  /* The Close Button */
+  .close-menu {
+    color: #aaaaaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-menu:hover,
+  .close-menu:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-link-user {
+    display: block;
+    margin: 1em;
+    font-size: 16px;
+    cursor: pointer;
+  }

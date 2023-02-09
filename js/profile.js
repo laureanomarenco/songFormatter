@@ -10,7 +10,7 @@
 const id = 1
 
 const fetchUser = async () => {
-    const aux = await fetch(`http://localhost:3000/usuario?idUsuario=` + id)
+    const aux = await fetch(`http://localhost:3000/usuario?id=` + id)
     const user = await aux.json()
     return user
 }
@@ -103,7 +103,7 @@ for (let i = 0; i < cancion.length; i++) {
     tdTitulo.addEventListener("click", () => {
         cancionClickeada.push(cancion[i])
     })
-    aTitulo.href = `song.html?id=${cancion[i].idCancion}`
+    aTitulo.href = `song.html?id=${cancion[i].id}`
     //aTitulo.href = `src/song.html`
     tdTitulo.appendChild(aTitulo)
     tr.appendChild(tdTitulo)
@@ -111,11 +111,11 @@ for (let i = 0; i < cancion.length; i++) {
     let auxAutor = false;
     for (let j = 0; j < autor.length; j++) {
         // Agregando autor
-        if (autor[j].idAutor === cancion[i].idAutor) {
+        if (autor[j].id === cancion[i].idAutor) {
             const tdAutor = document.createElement('td')
             const aAutor = document.createElement('a')
             aAutor.innerText = autor[j].nombre
-            aAutor.href = `autor.html?id=${autor[j].idAutor}`
+            aAutor.href = `autor.html?id=${autor[j].id}`
             tdAutor.appendChild(aAutor)
             tr.appendChild(tdAutor)
             auxAutor = true;

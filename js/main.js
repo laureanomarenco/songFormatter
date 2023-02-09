@@ -1,5 +1,8 @@
 // ** HOME **
 // #TODO controlar isLoggin
+
+const isLoggin = localStorage.getItem('isLoggin')
+
 const fetchCanciones = async () => {
     const aux = await fetch('http://localhost:3000/cancion')
     const cancion = await aux.json()
@@ -39,7 +42,7 @@ for (let i = 0; i < cancion.length; i++) {
     tdTitulo.addEventListener("click", () => {
         cancionClickeada.push(cancion[i])
     })
-    aTitulo.href = `src/song.html?id=${cancion[i].idCancion}`
+    aTitulo.href = `song.html?id=${cancion[i].id}`
     //aTitulo.href = `src/song.html`
     tdTitulo.appendChild(aTitulo)
     tr.appendChild(tdTitulo)
@@ -47,11 +50,11 @@ for (let i = 0; i < cancion.length; i++) {
     let auxAutor = false;
     for (let j = 0; j < autor.length; j++) {
         // Agregando autor
-        if (autor[j].idAutor === cancion[i].idAutor) {
+        if (autor[j].id === cancion[i].idAutor) {
             const tdAutor = document.createElement('td')
             const aAutor = document.createElement('a')
             aAutor.innerText = autor[j].nombre
-            aAutor.href = `src/autor.html?id=${autor[j].idAutor}`
+            aAutor.href = `autor.html?id=${autor[j].id}`
             tdAutor.appendChild(aAutor)
             tr.appendChild(tdAutor)
             auxAutor = true;
@@ -129,7 +132,7 @@ for (let i = 0; i < cancion.length; i++) {
     }
 
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target == modal_div) {
           modal_div.style.display = "none";
         }
     }

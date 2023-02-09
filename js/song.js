@@ -2,7 +2,7 @@ const url = new URLSearchParams(location.search)
 const id = url.get('id')
 
 const fetchCancion = async () => {
-    const aux = await fetch(`http://localhost:3000/cancion?idCancion=${id}`)
+    const aux = await fetch(`http://localhost:3000/cancion?id=${id}`)
     const cancion = await aux.json()
     return cancion
 }
@@ -11,7 +11,7 @@ const cancionFetched = await fetchCancion();
 const cancion = cancionFetched[0];
 
 const fetchAutor = async () => {
-    const aux = await fetch(`http://localhost:3000/autor?idAutor=${cancion.idAutor}`)
+    const aux = await fetch(`http://localhost:3000/autor?id=${cancion.idAutor}`)
     const autor = await aux.json()
     return autor
 }
