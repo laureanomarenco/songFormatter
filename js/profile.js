@@ -1,9 +1,7 @@
 // const url = new URLSearchParams(location.search)
 // const id = url.get('id')
-// #TODO obtener usuario
-// #TODO estilar datos de usuario y agregar modificación
-// #TODO Agregar modificar y eliminar canciones publicadas
-// #TODO agregar cancioneros del usuario con links a cada uno (poner la lista arriba de las canciones agregadas)
+// #TODO agregar modificación
+// #TODO Agregar modificar canciones publicadas
 // #TODO Crear cancioneros
 // #TODO Agregar modificar y eliminar cancioneros
 
@@ -38,7 +36,7 @@ const cancionerosUser = async () => {
 const cancion = await songsUser()
 const autor = await autorSongs()
 const cancioneros = await cancionerosUser()
-console.log(user);
+console.log(cancioneros);
 
 
 const content = document.querySelector('#content')
@@ -84,13 +82,102 @@ nueva_cancion.href = 'create-song.html'
 nueva_cancion.innerHTML = 'Nueva canción'
 div_botones.appendChild(nueva_cancion)
 
-const nuevo_cancionero = document.createElement('a')
+const nuevo_cancionero = document.createElement('button')
 nuevo_cancionero.classList.add('boton')
-nuevo_cancionero.href = 'nuevoCancionero.html'
+// nuevo_cancionero.href = 'nuevoCancionero.html'
 nuevo_cancionero.innerHTML = 'Nuevo cancionero'
 div_botones.appendChild(nuevo_cancionero)
 
 content.appendChild(div_botones)
+
+// ## MODAL NUEVO CANCIONERO 
+const $modal_div = document.createElement('div')
+$modal_div.classList.add('modal')
+
+const $content_div = document.createElement('div')
+$content_div.classList.add('modal-content')
+$modal_div.appendChild($content_div)
+
+const $close_span = document.createElement('span')
+$close_span.classList.add('close')
+$close_span.innerHTML = "&times;"
+$content_div.appendChild($close_span)
+
+const $modal_desc = document.createElement('h1')
+$modal_desc.classList.add('modal-title')
+$modal_desc.innerHTML = 'Nuevo cancionero'
+$content_div.appendChild($modal_desc)
+
+const $cancioneroForm = document.createElement('form')
+$cancioneroForm.classList.add('register-form')
+//nombre
+const $labelCancionero = document.createElement('label')
+$labelCancionero.innerHTML = "Nombre de su nuevo cancionero"
+$cancioneroForm.appendChild($labelCancionero)
+const $registerUser = document.createElement('input')
+$registerUser.classList.add('input-registerUser')
+$cancioneroForm.appendChild($registerUser)
+//submit
+const $registerSubmit = document.createElement('button')
+$registerSubmit.classList.add('boton')
+
+$registerSubmit.classList.add('btn-registerUser')
+$registerSubmit.innerHTML = 'Crear'
+$cancioneroForm.appendChild($registerSubmit)
+
+$content_div.appendChild($cancioneroForm)
+
+$modal_div.appendChild($content_div)
+
+content.appendChild($modal_div)
+
+nuevo_cancionero.onclick = function() {
+    $modal_div.style.display = "block";
+}
+
+$close_span.onclick = function() {
+    $modal_div.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == $modal_div) {
+      $modal_div.style.display = "none";
+    }
+}
+
+
+
+$cancioneroForm.addEventListener('submit', function(e){
+    const objPost = {
+        id: (cancioneros[cancioneros.length-1]++),
+        nombre: e.target[0].value,
+        idUser: user.id,
+        canciones: []
+    }
+    console.log(e);
+    const objConfig = {
+        method: 'POST', // Método HTTP (Verbo) CREATE
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(objPost) // transforma un obj js en un string
+    }
+    const resultado = fetch('http://localhost:3000/cancionero', objConfig)
+    resultado
+        .then(function (respuesta) {
+            console.log(respuesta)
+            console.log(respuesta.ok)
+            console.log(respuesta.status)
+            // console.log(respuesta.json())
+            return respuesta.json() // <= promesa
+        })
+        .then(function (dataPostCreado) {
+            console.log(dataPostCreado)
+            alert('Canciónero creado exitosamente')
+            //window.location.href = "profile.html"
+        })
+        .catch(function (err) {
+            console.error(err)
+        })
+})
 
 // ## CANCIONEROS ##
 const div_cancioneros = document.createElement('div')
@@ -104,6 +191,16 @@ if(!cancioneros.length){
     const no_cancioneros = document.createElement('p')
     no_cancioneros.innerHTML = "No tienes cancioneros, crea uno."
     div_cancioneros.appendChild(no_cancioneros)
+} else {
+    for(let i = 0; i < cancioneros.length; i++){
+        const cancionero_link = document.createElement('a')
+        cancionero_link.href = `cancionero.html?id=${cancioneros[i].id}`
+        const cancionero_div = document.createElement('div')
+        cancionero_div.classList.add('div-cancionero')
+        cancionero_div.innerHTML = cancioneros[i].nombre
+        cancionero_link.appendChild(cancionero_div)
+        div_cancioneros.appendChild(cancionero_link)
+    }
 }
 
 content.appendChild(div_cancioneros)
@@ -189,6 +286,7 @@ for (let i = 0; i < cancion.length; i++) {
     
     // Agregando botón delete
     const td3 = document.createElement('td')
+    td3.id = `${cancion[i].id}`
     td3.classList.add("delete")
     const a = document.createElement('a')
     //a.href = ``
@@ -199,9 +297,34 @@ for (let i = 0; i < cancion.length; i++) {
     td3.appendChild(a)
     tr.appendChild(td3)
     
-    
+    td3.addEventListener('click', function(e){
+        const cancionParaBorrar = td3.id
+        const objConfig = {
+            method: 'DELETE', // Método HTTP (Verbo) CREATE
+            headers: {'Content-type': 'application/json'},
+            //body: JSON.stringify(cancionParaBorrar) // transforma un obj js en un string
+        }
+        const resultado = fetch('http://localhost:3000/cancion/' + cancionParaBorrar, objConfig)
+        resultado
+        .then(function(respuesta) {
+            console.log(respuesta)
+            console.log(respuesta.ok)
+            console.log(respuesta.status)
+            // console.log(respuesta.json())
+            return respuesta.json() // <= promesa
+        })
+        .then(function(borrada) {
+            console.log(borrada)
+            window.location.href = 'profile.html'
+        })
+        .catch(function(err) {
+            console.error(err)
+        })
+    })
+
     // Agregando botón update
     const td4 = document.createElement('td')
+    td4.id = `${cancion[i].id}`
     td4.classList.add("edit")
     const a2 = document.createElement('a')
     //a2.href = ``
@@ -242,3 +365,5 @@ content.appendChild(table)
 //     </tbody>  
 
 // </table> -->
+
+

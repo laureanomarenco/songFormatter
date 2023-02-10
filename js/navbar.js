@@ -44,11 +44,11 @@ if (isLoggin) {
     link_modal.href = 'profile.html'
     content_div.appendChild(link_modal)
 
-    const link_cancioneros = document.createElement('a')
-    link_cancioneros.classList.add('modal-link-user')
-    link_cancioneros.innerHTML = "Nuevo Cancionero"
-    link_cancioneros.href = 'nuevoCancionero.html'
-    content_div.appendChild(link_cancioneros)
+    // const link_cancioneros = document.createElement('a')
+    // link_cancioneros.classList.add('modal-link-user')
+    // link_cancioneros.innerHTML = "Nuevo Cancionero"
+    // link_cancioneros.href = 'nuevoCancionero.html'
+    // content_div.appendChild(link_cancioneros)
 
     
     const link_cancion = document.createElement('a')
