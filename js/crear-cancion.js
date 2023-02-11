@@ -33,7 +33,7 @@ $titulo_input.name = 'titulo'
 $titulo_input.placeholder = 'Titulo de la canción'
 $form.appendChild($titulo_input)
 
-// #TODO Select con los autores cargados
+
 const $autor_select = document.createElement('select')
 $autor_select.name = 'autor'
 $autor_select.placeholder = 'Autor de la canción'

@@ -4,7 +4,7 @@
     margin: auto;
     width: 40%;
     border-radius: 5px;
-    box-shadow: 7px 6px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 7px 6px 20px 0px rgba(0, 0, 0, 0.75);
 }
 
 .delete:hover {
@@ -29,47 +29,56 @@
 
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 16px;
     border: 1px solid #888;
     width: 32%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+/* The Close Button */
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
-  .modal-title {
+.modal-title {
     margin: 1em;
     font-size: 24px;
-  }
+}
 
 .input-registerUser {
     margin: .5em 0;
@@ -92,4 +101,48 @@
     margin: 1em auto;
     padding: 1em;
     cursor: pointer;
+}
+
+.modal-edit {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-edit {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 16px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+input,
+label,
+.button-modificar {
+    display: block;
+    margin: .5em auto;
+}
+
+input,
+label {
+    width: 50%;
 }
