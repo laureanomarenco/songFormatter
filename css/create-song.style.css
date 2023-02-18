@@ -3,7 +3,20 @@ form, input, select, .button, textarea {
     margin: 1em auto;
 }
 
-input, select {
-    width: 30%;
+input, select, textarea {
+    width: 60%;
     height: 2em;
+    border: none;
+    background-color: transparent;
 }
+
+textarea {
+    height: 100%;
+}
+
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+

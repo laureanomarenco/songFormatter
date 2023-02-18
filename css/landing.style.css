@@ -34,7 +34,7 @@ form {
 
 input, label, button {
     display: block;
-    margin: .5em auto;
+    margin: 1em auto;
 }
 
 button {
@@ -47,7 +47,7 @@ button {
 }
 
 .register-form {
-    background-color: white;
+    background-color: var(--modalColor);
     margin: 0;
     padding: 1em;
 }
@@ -68,10 +68,10 @@ button {
   
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+    background-color: var(--modalColor);
     margin: auto;
     padding: 16px;
-    border: 1px solid #888;
+    border: var(--border);
     width: 32%;
   }
   

@@ -6,7 +6,30 @@
     box-sizing: border-box;
 }
 
+:root {
+    --colorPrimario: bisque;
+    --colorSecundario: rgb(255, 235, 210);
+    --colorCancionero: rgb(255, 210, 155);
+    --colorCancioneroHover: rgb(254, 199, 132);
+    --border: 1px solid rgb(255, 208, 151);
+    --hoverTable: rgb(255, 248, 239);
+    --modalColor: rgb(255, 248, 239);
+    --colorBotonPrimario: rgb(255, 147, 135);
+    --colorBotonHover: rgb(250, 133, 120);
+    --colorBotonAddHover: ;
+    --colorBotonDeleteHover: rgba(255, 0, 0, 0.1);
+    --colorEditHover: rgb(0, 0, 255, 0.1);
+    --colorfondo: linear-gradient(90deg, rgba(217, 217, 217, 1) 0%, rgba(245, 245, 245, 1) 50%, rgba(217, 217, 217, 1) 100%);
+
+    --shadows: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    --lights: 0px 0px 10px 0px rgb(250, 133, 120);
+}
+
 /* #### ELEMENTOS #### */
+body {
+    background: rgb(245, 245, 245);
+    background: linear-gradient(90deg, rgba(245, 245, 245, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(245, 245, 245, 1) 100%);
+}
 
 nav {
     margin: auto;
@@ -14,7 +37,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1vw 2vw;
-    background-color: antiquewhite;
+    background-color: var(--colorPrimario);
+    box-shadow: var(--shadows);
 }
 
 hgroup img {
@@ -29,18 +53,19 @@ a {
 
 table {
     margin: auto;
+    width: 65%;
 }
 
 th {
-    background-color: antiquewhite;
+    background-color: var(--colorSecundario);
     padding: .5em 3em;
-    border: 1px solid rgb(255, 166, 156);
+    border: var(--border);
 
 }
 
 td {
-    padding: .5em 0;
-    border: 1px solid rgb(255, 166, 156);
+    padding: .5em 1em;
+    border: var(--border);
 }
 
 td .add {
@@ -48,18 +73,19 @@ td .add {
 }
 
 td a {
-    padding: 0 1em;
+    padding: 0;
     cursor: pointer;
 }
 
 td:hover {
-    background-color: rgb(255, 248, 239);
+    background-color: var(--hoverTable);
 }
 
 
 hr {
     margin-bottom: 46px;
 }
+
 /* td a:hover::after {
     content: attr(data-title);
     background-color:rgb(255, 209, 204);
@@ -122,58 +148,73 @@ hr {
 }
 
 .modal-user {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     justify-content: flex-end;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 40px; /* Location of the box */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 40px;
+    /* Location of the box */
     right: 20px;
     top: 0;
-    width: 100%; /* Full width */
-    height: auto; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-  }
-  
-  /* Modal Content */
-  .modal-content-user {
-    background-color: #fefefe;
+    width: 100%;
+    /* Full width */
+    height: auto;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+}
+
+/* Modal Content */
+.modal-content-user {
+    background-color: var(--modalColor);
     padding: 16px;
-    border: 1px solid #888;
+    border: var(--border);
+    border-radius: 5px;
     width: 16%;
-  }
-  
-  /* The Close Button */
-  .close-menu {
+}
+
+/* The Close Button */
+.close-menu {
     color: #aaaaaa;
     float: left;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close-menu:hover,
-  .close-menu:focus {
+}
+
+.close-menu:hover,
+.close-menu:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
-  .modal-link-user {
+.modal-link-user {
     display: block;
     margin: 1em;
     font-size: 16px;
     cursor: pointer;
-  }
+}
 
-  .boton {
+.boton {
     font-size: 16px;
     padding: .5em;
     margin: 2em;
     cursor: pointer;
-    background-color: rgb(255, 166, 156);
+    background-color: var(--colorBotonPrimario);
+    box-shadow: var(--shadows);
     border-radius: 5px;
     border: none;
 }
 
 .boton:hover {
-    background-color: rgb(250, 133, 120);
+    background-color: var(--colorBotonHover);
+    box-shadow: var(--lights);
+
+}
+
+.margin-auto {
+    margin: 2em auto;
 }

@@ -28,6 +28,7 @@ const $form = document.createElement('form')
 $form.method = 'POST'
 
 const $titulo_input = document.createElement('input')
+$titulo_input.classList.add('input-titulo')
 $titulo_input.type = 'text'
 $titulo_input.name = 'titulo'
 $titulo_input.placeholder = 'Titulo de la canción'
@@ -35,6 +36,7 @@ $form.appendChild($titulo_input)
 
 
 const $autor_select = document.createElement('select')
+$autor_select.classList.add('select-autor')
 $autor_select.name = 'autor'
 $autor_select.placeholder = 'Autor de la canción'
 for(let i = 0 ; i < autores.length; i++){
@@ -45,12 +47,14 @@ for(let i = 0 ; i < autores.length; i++){
 $form.appendChild($autor_select)
 
 const $descripcion_input = document.createElement('input')
+$descripcion_input.classList.add('input-descripcion')
 $descripcion_input.type = 'text'
 $descripcion_input.name = 'descripcion'
 $descripcion_input.placeholder = 'Descripcion de la canción'
 $form.appendChild($descripcion_input)
 
 const $anio = document.createElement('input')
+$anio.classList.add('input-anio')
 $anio.type = 'text'
 $anio.name = 'anio'
 $anio.placeholder = 'Año de publicación de la canción'

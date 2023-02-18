@@ -102,6 +102,8 @@ $registerPasswordAgain.type = "password"
 $registerForm.appendChild($registerPasswordAgain)
 //submit
 const $registerSubmit = document.createElement('button')
+$registerSubmit.classList.add('boton')
+$registerSubmit.classList.add('margin-auto')
 $registerSubmit.innerHTML = 'Registrate'
 $registerForm.appendChild($registerSubmit)
 
@@ -131,7 +133,7 @@ window.onclick = function(event) {
 // ## COMPROBANDO USER ##
 
 const fetchUsers = async () => {
-    const aux = await fetch('http://localhost:3000/usuario')
+    const aux = await fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios')
     const usuario= await aux.json()
     return usuario
 }
@@ -145,7 +147,7 @@ $loginForm.addEventListener('submit', function(e){
     usuarios.map(u => {
         if(u.nickname === e.target[0].value && u.password === e.target[1].value){
             isLoggin = true;
-            localStorage.setItem('isLoggin', e.target[0].value);
+            localStorage.setItem('isLoggin', u.idUsuario);
             window.location.href = 'src/home.html'
             console.log("logeado correctamente");
         }
@@ -171,7 +173,6 @@ $registerForm.addEventListener("submit", function(e){
         $registerForm.appendChild(passError)
     } else {
         const objPost = {
-            id: (usuarios[usuarios.length-1].id + 1),
             nickname: e.target[0].value, 
             password: e.target[2].value,
             mail: e.target[1].value,
@@ -183,17 +184,17 @@ $registerForm.addEventListener("submit", function(e){
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(objPost) // transforma un obj js en un string
         }
-        const resultado = fetch('http://localhost:3000/usuario', objConfig)
+        const resultado = fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios', objConfig)
         resultado
         .then(function(respuesta) {
             console.log(respuesta)
             console.log(respuesta.ok)
             console.log(respuesta.status)
             // console.log(respuesta.json())
-            return respuesta.json() // <= promesa
+            //return respuesta.json() // <= promesa
         })
-        .then(function(dataPostCreado) {
-            console.log(dataPostCreado)
+        .then(function() {
+            console.log("usaurio creado")
             const success = document.createElement('p')
             success.classList.add('success')
             success.innerHTML = 'Usuario creado exitosamente, ¡Ahora ingresá con el!'
