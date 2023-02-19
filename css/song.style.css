@@ -1,3 +1,10 @@
+/* *{
+    text-align: start;
+} */
 #box p {
     margin: 3vh;
 }    
+
+.line {
+    white-space: break-spaces;
+}

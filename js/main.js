@@ -4,7 +4,7 @@ const isLoggin = localStorage.getItem('isLoggin')
 const userLogged = localStorage.getItem('isLoggin')
 
 const fetchCanciones = async () => {
-    const aux = await fetch('http://localhost:3000/cancion')
+    const aux = await fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion')
     const cancion = await aux.json()
     return cancion
 }
@@ -67,7 +67,7 @@ for (let i = 0; i < cancion.length; i++) {
     tdTitulo.addEventListener("click", () => {
         cancionClickeada.push(cancion[i])
     })
-    aTitulo.href = `song.html?id=${cancion[i].id}`
+    aTitulo.href = `song.html?id=${cancion[i].idCancion}`
     //aTitulo.href = `src/song.html`
     tdTitulo.appendChild(aTitulo)
     tr.appendChild(tdTitulo)

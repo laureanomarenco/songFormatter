@@ -82,7 +82,7 @@ content.appendChild($form)
 const userLogged = localStorage.getItem('isLoggin')
 
 const fetchUser = async () => {
-    const aux = await fetch(`http://localhost:3000/usuario?nickname=` + userLogged)
+    const aux = await fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios?nickname=' + userLogged)
     const user = await aux.json()
     return user
 }
@@ -108,18 +108,14 @@ $form.addEventListener("submit", function (e) {
     let nombreAutor = e.target[1].value
 
     const autor = autores.filter(e => e.nombre === nombreAutor)
-    console.log(autor);
-    let letraArray =  e.target[4].value.split(/\n/)
-
 
     const objPost = {
-        id: (cancion[cancion.length - 1].id + 1),
-        idUsuario: user.id,
+        idUsuario: user.idUsuario,
         idAutor: autor[0].id,
         titulo: e.target[0].value,
         detalles: e.target[2].value,
         anio: e.target[3].value,
-        letra: letraArray
+        letra: e.target[4].value
     }
 
     const objConfig = {
@@ -127,14 +123,14 @@ $form.addEventListener("submit", function (e) {
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(objPost) // transforma un obj js en un string
     }
-    const resultado = fetch('http://localhost:3000/cancion', objConfig)
+    const resultado = fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion', objConfig)
     resultado
         .then(function (respuesta) {
             console.log(respuesta)
             console.log(respuesta.ok)
             console.log(respuesta.status)
             // console.log(respuesta.json())
-            return respuesta.json() // <= promesa
+            //return respuesta.json() // <= promesa
         })
         .then(function (dataPostCreado) {
             console.log(dataPostCreado)

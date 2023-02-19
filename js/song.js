@@ -2,13 +2,13 @@ const url = new URLSearchParams(location.search)
 const id = url.get('id')
 
 const fetchCancion = async () => {
-    const aux = await fetch(`http://localhost:3000/cancion?id=${id}`)
+    const aux = await fetch(`http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion/${id}`)
     const cancion = await aux.json()
     return cancion
 }
 
-const cancionFetched = await fetchCancion();
-const cancion = cancionFetched[0];
+const cancion = await fetchCancion();
+
 
 const fetchAutor = async () => {
     const aux = await fetch(`http://localhost:3000/autor?id=${cancion.idAutor}`)
@@ -47,12 +47,13 @@ body.appendChild(hr)
 
 
 // ### LETRA ###
-cancion.letra.forEach(e => {
-    const line = document.createElement('p')
-    line.classList.add("line")
-    line.innerHTML = e
-    body.appendChild(line)
-});
+const letraString = cancion.letra.replace(/\n/g, "<br />")
+
+const line = document.createElement('p')
+line.classList.add("line")
+line.innerHTML = letraString
+body.appendChild(line);
+
 
 
 {/* <hgroup class="head">
