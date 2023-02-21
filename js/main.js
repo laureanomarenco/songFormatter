@@ -43,21 +43,6 @@ if(isLoggin){
 
 const cancion = await fetchCanciones();
 const autor = await fetchAutores();
-// ## FILTRO DE BUSQUEDA ##
-// #TODO busqueda
-
-
-
-const input = document.querySelector("#searcher")
-
-input.addEventListener("onkeypress", (e) => {
-    cancion = cancion.filter((c) => c.titulo === e.target.value)
-    autor = autor.filter((a) => a.nombre !== e.target.value)
-    console.log(cancion);
-    console.log(autor);
-})
-
-
 
 for (let i = 0; i < cancion.length; i++) {
     const table = document.querySelector('#body-table')
@@ -205,3 +190,34 @@ for (let i = 0; i < cancion.length; i++) {
     table.appendChild(tr)
 
 }
+
+
+// ## FILTRO DE BUSQUEDA ##
+
+const input = document.querySelector("#searcher")
+
+input.addEventListener("keyup", (e) => {
+
+    
+    var table_body, num_cols, display, input, filter, tr, td, i, j, txtValue;
+    num_cols = 1;
+    input = document.getElementById("searcher");
+    filter = e.target.value.toUpperCase();
+    table_body = document.getElementById("body-table");
+    tr = table_body.getElementsByTagName("tr");
+
+    for(i=0; i< tr.length; i++){				
+        display = "none";
+        for(j=0; j < num_cols; j++){
+            td = tr[i].getElementsByTagName("td")[j];
+            if(td){
+                txtValue = td.textContent || td.innerText;
+                if(txtValue.toUpperCase().indexOf(filter) > -1){
+                    display = "";
+                }
+            }
+        }
+        tr[i].style.display = display;
+    }
+})
+
