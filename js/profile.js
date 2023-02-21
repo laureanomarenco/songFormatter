@@ -10,7 +10,7 @@ const fetchUser = async () => {
 const user = await fetchUser()
 
 const songsUser = async () => {
-    const aux = await fetch(`http://localhost:3000/cancion?idUsuario=` + user.id)
+    const aux = await fetch(`http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion?idUsuario=` + user.idUsuario)
     const cancion = await aux.json()
     return cancion
 }
@@ -22,7 +22,7 @@ const autorSongs = async () => {
 }
 
 const cancionerosUser = async () => {
-    const aux = await fetch(`http://localhost:3000/cancionero?idUser=` + user.id)
+    const aux = await fetch(`http://localhost:3000/cancionero?idUser=` + user.idUsuario)
     const cancioneros = await aux.json()
     return cancioneros
 }
@@ -156,7 +156,7 @@ $userEditForm.addEventListener('submit', function (e) {
             })
             .then(function (dataPostCreado) {
                 console.log(dataPostCreado)
-                alert('Canciónero creado exitosamente')
+                alert('Usuario actualizado exitosamente')
                 //window.location.href = "profile.html"
             })
             .catch(function (err) {
@@ -270,7 +270,7 @@ $cancioneroForm.addEventListener('submit', function (e) {
     const objPost = {
         id: (cancioneros[cancioneros.length - 1]++),
         nombre: e.target[0].value,
-        idUser: user.id,
+        idUser: user.idUsuario,
     }
 
     const objConfig = {
@@ -366,7 +366,7 @@ if (!cancion.length) {
         tdTitulo.addEventListener("click", () => {
             cancionClickeada.push(cancion[i])
         })
-        aTitulo.href = `song.html?id=${cancion[i].id}`
+        aTitulo.href = `song.html?id=${cancion[i].idCancion}`
         //aTitulo.href = `src/song.html`
         tdTitulo.appendChild(aTitulo)
         tr.appendChild(tdTitulo)
@@ -404,7 +404,7 @@ if (!cancion.length) {
 
         // Agregando botón delete
         const td3 = document.createElement('td')
-        td3.id = `${cancion[i].id}`
+        td3.id = `${cancion[i].idCancion}`
         td3.classList.add("delete")
         const a = document.createElement('a')
         //a.href = ``
@@ -422,14 +422,14 @@ if (!cancion.length) {
                 headers: { 'Content-type': 'application/json' },
                 //body: JSON.stringify(cancionParaBorrar) // transforma un obj js en un string
             }
-            const resultado = fetch('http://localhost:3000/cancion/' + cancionParaBorrar, objConfig)
+            const resultado = fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion/' + cancionParaBorrar, objConfig)
             resultado
                 .then(function (respuesta) {
                     console.log(respuesta)
                     console.log(respuesta.ok)
                     console.log(respuesta.status)
                     // console.log(respuesta.json())
-                    return respuesta.json() // <= promesa
+                    // return respuesta.json() // <= promesa
                 })
                 .then(function (borrada) {
                     console.log(borrada)
@@ -502,7 +502,7 @@ if (!cancion.length) {
         const $input_letra = document.createElement('textarea')
         $input_letra.rows = '20'
         $input_letra.cols = '60'
-        $input_letra.value = cancion[i].letra.map(l => l)
+        $input_letra.value = cancion[i].letra
         $editForm.appendChild($input_letra)
         //submit
         const $modificarSubmit = document.createElement('button')
@@ -535,7 +535,7 @@ if (!cancion.length) {
         table.appendChild(tr)
 
         $editForm.addEventListener('submit', function (e) {
-            let letraArray = e.target[3].value.split(/\n/)
+            //let letraArray = e.target[3].value.split(/\n/)
 
             const update = {
                 idUsuario: cancion[i].idUsuario,
@@ -543,8 +543,7 @@ if (!cancion.length) {
                 titulo: e.target[0].value,
                 detalles: e.target[1].value,
                 anio: e.target[2].value,
-                letra: letraArray,
-                acordes: []
+                letra: e.target[3].value,
             }
 
             const objConfig = {
@@ -552,14 +551,14 @@ if (!cancion.length) {
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(update) // transforma un obj js en un string
             }
-            const resultado = fetch('http://localhost:3000/cancion/' + cancion[i].id, objConfig)
+            const resultado = fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion/' + cancion[i].idCancion, objConfig)
             resultado
                 .then(function (respuesta) {
                     console.log(respuesta)
                     console.log(respuesta.ok)
                     console.log(respuesta.status)
                     // console.log(respuesta.json())
-                    return respuesta.json() // <= promesa
+                    // return respuesta.json() // <= promesa
                 })
                 .then(function (modificada) {
                     console.log(modificada)

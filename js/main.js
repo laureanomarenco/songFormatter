@@ -18,22 +18,22 @@ let cancioneros;
 if(isLoggin){
 
     const fetchUser = async () => {
-        const aux = await fetch(`http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios?nickname=` + userLogged)
+        const aux = await fetch(`http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios/` + userLogged)
         const user = await aux.json()
         return user
     }
 
-    const aux = await fetchUser()
-    const user = aux[0]
+    const user = await fetchUser()
+    //const user = aux[0]
     
-    const songsUser = async () => {
-        const aux = await fetch(`http://localhost:3000/cancion?idUsuario=` + user.id)
-        const cancion = await aux.json()
-        return cancion
-    }
+    // const songsUser = async () => {
+    //     const aux = await fetch(`http://localhost:3000/cancion?idUsuario=` + user.idUsuario)
+    //     const cancion = await aux.json()
+    //     return cancion
+    // }
     
     const cancionerosUser = async () => {
-        const aux = await fetch(`http://localhost:3000/cancionero?idUser=` + user.id)
+        const aux = await fetch(`http://localhost:3000/cancionero?idUser=` + user.idUsuario)
         const cancioneros = await aux.json()
         return cancioneros
     }
@@ -45,11 +45,14 @@ const cancion = await fetchCanciones();
 const autor = await fetchAutores();
 // ## FILTRO DE BUSQUEDA ##
 // #TODO busqueda
+
+
+
 const input = document.querySelector("#searcher")
 
-input.addEventListener("change", (e) => {
-    cancion.filter((c) => c.titulo !== e.target.value)
-    autor.filter((a) => a.nombre !== e.target.value)
+input.addEventListener("onkeypress", (e) => {
+    cancion = cancion.filter((c) => c.titulo === e.target.value)
+    autor = autor.filter((a) => a.nombre !== e.target.value)
     console.log(cancion);
     console.log(autor);
 })
@@ -152,7 +155,7 @@ for (let i = 0; i < cancion.length; i++) {
                 const objPost = {
                     idCancionero: c.id,
                     idUser: c.idUser,
-                    idCancion: cancion[i].id,
+                    idCancion: cancion[i].idCancion,
                 }
                 
                 const objConfig = {

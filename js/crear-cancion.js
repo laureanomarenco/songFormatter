@@ -5,7 +5,7 @@ const fetchAutores = async () => {
 }
 
 const autores = await fetchAutores();
-
+console.log(autores);
 const content = document.querySelector('main')
 
 // ################ HEADER ##################
@@ -82,7 +82,7 @@ content.appendChild($form)
 const userLogged = localStorage.getItem('isLoggin')
 
 const fetchUser = async () => {
-    const aux = await fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios?nickname=' + userLogged)
+    const aux = await fetch('http://localhost:8080/songApp-1.0-SNAPSHOT/api/usuarios/' + userLogged)
     const user = await aux.json()
     return user
 }
@@ -93,22 +93,26 @@ const fetchCanciones = async () => {
     return cancion
 }
 
+console.log(autores);
 
 
 const cancion = await fetchCanciones();
 
-const aux = await fetchUser()
-const user = aux[0]
+const user = await fetchUser()
+
+// const user = aux[0]
 
 // ######### POST CANCION ##########
 $form.addEventListener("submit", function (e) {
     e.preventDefault();
     console.log(e);
+console.log(autores);
     
     let nombreAutor = e.target[1].value
 
-    const autor = autores.filter(e => e.nombre === nombreAutor)
-
+    console.log(autores);
+    const autor = autores.filter(a => a.nombre === nombreAutor)
+    console.log(autor[0]);
     const objPost = {
         idUsuario: user.idUsuario,
         idAutor: autor[0].id,
@@ -117,7 +121,7 @@ $form.addEventListener("submit", function (e) {
         anio: e.target[3].value,
         letra: e.target[4].value
     }
-
+console.log(objPost);
     const objConfig = {
         method: 'POST', // Método HTTP (Verbo) CREATE
         headers: { 'Content-type': 'application/json' },

@@ -49,7 +49,7 @@ $content.appendChild($headgroup_cancioneros)
 let canciones_cancionero = []
 for (let i = 0; i < cancionesIds.length; i++) {
     const songsCancionero = async () => {
-        const aux = await fetch(`http://localhost:3000/cancion/` + cancionesIds[i].idCancion)
+        const aux = await fetch(`http://localhost:8080/songApp-1.0-SNAPSHOT/api/cancion/` + cancionesIds[i].idCancion)
         const cancion = await aux.json()
         return cancion
     }
